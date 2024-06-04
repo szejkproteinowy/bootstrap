@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href=".\bootstrap-5.3.2-dist\css\bootstrap.min.css" />
+  <script src=".\bootstrap-5.3.2-dist\js\bootstrap.min.js"></script>
+
+  <title>Document</title>
+</head>
+
+<body class="text-secondary bg-light">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-5"></div>
+      <div class="col-2">
+        <form id="myForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name_value" />
+          </div>
+          <div class="mb-3">
+            <label for="surname" class="form-label">Surname:</label>
+            <input type="text" class="form-control" id="surname_value" />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email_value" />
+          </div>
+          <label for="age_value" class="form-label">Age:</label>
+          <input type="range" class="form-range" oninput="changeRangeLabel()" id="age_value" min="18" max="60" value="18" />
+          <label for="age_value">Current age: <output id="age_label">18</output></label>
+          <div class="mb-3">
+            <label for="internship_value" class="form-label">Internship:</label>
+            <input type="number" class="form-control" id="internship_value" />
+          </div>
+          <div>
+            <label for="Gender" class="form-label">Gender:</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radioGender" value="Male" id="flexRadioDefault1"
+              checked />
+            <label class="form-check-label" for="flexRadioDefault1">
+              Male
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radioGender" value="Female" id="flexRadioDefault2" />
+            <label class="form-check-label" for="flexRadioDefault2">
+              Female
+            </label>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="sendForm()">Submit</button>
+        </form>
+        <div>
+          <p id="Name"></p>
+        </div>
+        <div>
+          <p id="Surname"></p>
+        </div>
+        <div>
+          <p id="Email"></p>
+        </div>
+        <div>
+          <p id="Age"></p>
+        </div>
+        <div>
+          <p id="Internship"></p>
+        </div>
+        <div>
+          <p id="Gender"></p>
+        </div>
+        <div class="col-5"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  function changeRangeLabel()
+  {
+    document.querySelector("#age_label").innerHTML = document.querySelector("#age_value").value;
+  }
+  function sendForm() {
+    let name = document.querySelector("#Name");
+    let surname = document.querySelector("#Surname");
+    let email = document.querySelector("#Email");
+    let age = document.querySelector("#Age");
+    let internship = document.querySelector("#Internship");
+    let gender = document.querySelector("#Gender");
+
+    let name_value = document.querySelector("#name_value").value;
+    let surname_value = document.querySelector("#surname_value").value;
+    let email_value = document.querySelector("#email_value").value;
+    let age_value = document.querySelector("#age_value").value;
+    let internship_value = document.querySelector("#internship_value").value;
+    let gender_value = document.querySelector("input[name=radioGender]:checked").value;
+    console.log(name_value)
+    if (name_value != "" && surname_value != "" && email_value != "" && internship_value != "") {
+      name.innerHTML = "Name: "+name_value;
+      surname.innerHTML = "Surname: "+surname_value;
+      email.innerHTML = "E-mail: "+email_value;
+      age.innerHTML = "Age: "+age_value;
+      internship.innerHTML = "Internship: "+internship_value;
+      gender.innerHTML = "Gender: "+gender_value;
+    }
+  }
+</script>
+
+</html>
